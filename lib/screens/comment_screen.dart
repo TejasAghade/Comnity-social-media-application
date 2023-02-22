@@ -37,6 +37,7 @@ class _CommentScreenState extends State<CommentScreen> {
           elevation: 1,
           title: Text("Comments"),
           centerTitle: true,
+          foregroundColor: Colors.black,
         ),
         
         body: StreamBuilder(

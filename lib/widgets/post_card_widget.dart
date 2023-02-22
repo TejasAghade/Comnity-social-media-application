@@ -9,6 +9,7 @@ import 'package:comnity/utils/colors.dart';
 import 'package:comnity/utils/utils.dart';
 import 'package:comnity/widgets/like_animation.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:intl/intl.dart';
@@ -99,7 +100,8 @@ class _PostCardWidgetState extends State<PostCardWidget> {
                       ),
                     ],
                   ),
-                  IconButton(
+                  
+                 widget.snap['uid'] == FirebaseAuth.instance.currentUser!.uid? IconButton(
                     onPressed: () {
                       showDialog(context: context, builder: (context) => Dialog(
                         child: ListView(
@@ -127,7 +129,8 @@ class _PostCardWidgetState extends State<PostCardWidget> {
                       )
                      );
                     }, 
-                    icon: Icon(EvaIcons.moreHorizontal))
+                    icon: Icon(EvaIcons.moreHorizontal)
+                  ) : Icon(EvaIcons.moreHorizontal)
                 ],
               ),
               Divider(

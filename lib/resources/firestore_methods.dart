@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comnity/models/post.dart';
+import 'package:comnity/models/user_model.dart';
 import 'package:comnity/resources/storage_methods.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
@@ -126,6 +127,6 @@ class FirestoreMethods{
     }
   }
 
-
+  
 
 }

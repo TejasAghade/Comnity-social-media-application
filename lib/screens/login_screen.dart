@@ -1,8 +1,14 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, use_build_context_synchronously
 
+import 'package:comnity/models/user_model.dart';
 import 'package:comnity/resources/auth_methods.dart';
+import 'package:comnity/resources/firebase_helper.dart';
+import 'package:comnity/responsive/mobile_screen_layout.dart';
+import 'package:comnity/screens/admin_page.dart';
+import 'package:comnity/utils/global_variables.dart';
 import 'package:comnity/utils/utils.dart';
 import 'package:comnity/widgets/text_field_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,6 +24,20 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool isLoading = false;
+
+  bool isAdmin = false;
+  late UserModel user;
+
+  checkAdmin() async{
+    user = (await FirebaseHelper.getUserById(FirebaseAuth.instance.currentUser!.uid))!;
+    setState(() {
+      // isAdmin = user.isAdmin!;
+      if(user.isAdmin == true){
+        isAdmin = true;
+        isAdminGlobal = true;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -37,8 +57,9 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = false;
       });
-      
-      Navigator.of(context).pushNamed('/home');
+
+      checkAdmin();
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => isAdmin? AdminPage() :  MobileScreenLayout(),));
 
     }else{
 

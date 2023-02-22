@@ -60,11 +60,11 @@ class _SignupPageState extends State<SignupPage> {
       setState(() {
         isLoading = false;
       });
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FeedScreen(),));
-    if(res != 'success'){
-      showSnackBar(res, context);
-      
-    }
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FeedScreen(),));
+      if(res != 'success'){
+        showSnackBar(res, context);
+        
+      }
 
     
 

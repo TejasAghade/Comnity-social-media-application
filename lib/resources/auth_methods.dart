@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comnity/resources/storage_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:comnity/models/user_model.dart' as userModel;
 
@@ -43,7 +42,8 @@ class AuthMethods{
             bio : bio,
             followers:[],
             following:[],
-            photoUrl : photoUrl
+            photoUrl : photoUrl,
+            isAdmin : false,
           );
 
           // add user to database
